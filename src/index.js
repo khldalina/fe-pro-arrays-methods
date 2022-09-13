@@ -102,18 +102,18 @@ const maxPriceReducer = (accum, current,) => {
   },-Infinity);
   return maxPrice;
 };
-const toMaxSorter = (a,b) => {
+const toMaxSorter = (max,min) => {
   const sorterMax = goods.sort((good) => {
-    if (a.price > b.price) return -1;
-    if (a.price < b.price) return 1;
+    if (max.price > min.price) return -1;
+    if (max.price < min.price) return 1;
     return 0;
   });
   return sorterMax;
 };
-const toMinSorter = (a,b) => {
+const toMinSorter = (max,min) => {
   const sorterMin = goods.sort((good) => {
-    if (a.price > b.price) return 1;
-    if (a.price < b.price) return -1;
+    if (max.price > min.price) return 1;
+    if (max.price < min.price) return -1;
     return 0;
   });
   return sorterMin;
