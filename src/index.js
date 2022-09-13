@@ -83,7 +83,7 @@ const osFilter = (os) => {
  */
 const rangeFilter = (from, to) => {
   const filteredRange = goods.filter((good) => {
-    return good.price >= 6499 && good.price <= 48999;
+    return good.price >= from && good.price <= to;
   });
   return filteredRange
 };
@@ -91,29 +91,29 @@ const rangeFilter = (from, to) => {
 
 const minPriceReducer = (accum, current,) => {
   const minPrice = goods.reduce((accum, current) =>{
-    return Math.min(accum, current);
+    return Math.min(accum, current.price);
   },+Infinity);
   return minPrice;
 };
 
 const maxPriceReducer = (accum, current,) => {
   const maxPrice = goods.reduce((accum, current) =>{
-    return Math.max(accum, current);
+    return Math.max(accum, current.price);
   },-Infinity);
   return maxPrice;
 };
-const toMaxSorter = (max,min) => {
-  const sorterMax = goods.sort((good) => {
-    if (max.price > min.price) return -1;
-    if (max.price < min.price) return 1;
+const toMaxSorter = (a,b) => {
+  const sorterMax = goods.sort((a,b) => {
+    if (a.price > b.price) return -1;
+    if (a.price < b.price) return 1;
     return 0;
   });
   return sorterMax;
 };
-const toMinSorter = (max,min) => {
-  const sorterMin = goods.sort((good) => {
-    if (max.price > min.price) return 1;
-    if (max.price < min.price) return -1;
+const toMinSorter = (a,b) => {
+  const sorterMin = goods.sort((a,b) => {
+    if (a.price > b.price) return 1;
+    if (a.price < b.price) return -1;
     return 0;
   });
   return sorterMin;
